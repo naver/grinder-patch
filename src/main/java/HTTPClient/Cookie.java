@@ -233,7 +233,7 @@ public class Cookie implements Serializable {
 			// now parse attributes
 
 			boolean legal = true;
-			parts: while (true) // parse all parts
+			while (true) // parse all parts
 			{
 				if (beg >= len || buf[beg] == ',')
 					break;
@@ -245,8 +245,13 @@ public class Cookie implements Serializable {
 				}
 
 				// first check for secure, as this is the only one w/o a '='
-				if ((beg + 6 <= len)
+				if (beg + 8 <= len
+						&& set_cookie
+								.regionMatches(true, beg, "secure=1", 0, 8)) {
+					curr.secure = true;
+				} else if ((beg + 6 <= len)
 						&& set_cookie.regionMatches(true, beg, "secure", 0, 6)) {
+
 					curr.secure = true;
 					beg += 6;
 
