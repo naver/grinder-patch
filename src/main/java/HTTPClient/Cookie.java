@@ -31,6 +31,10 @@
  * This file contains modifications for use with "The Grinder"
  * (http://grinder.sourceforge.net) under the terms of the LGPL. They
  * are marked below with the comment "GRINDER MODIFICATION".
+ * 
+ * This file contains modifications for use with "nGrinder" 
+ * (http://nhnopensource.org/ngrinder) under the terms of the LGPL. They
+ * are marked below with the comment "NGRINDER MODIFICATION".
  */
 
 package HTTPClient;
