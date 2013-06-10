@@ -1,7 +1,7 @@
 <configuration>
 
 	<property name="PREFIX" value="${LOG_DIRECTORY}/${WORKER_NAME}" />
-	<property name="PREFIX_BOOTSTRAP" value="${LOG_DIRECTORY}/bootstrap" />
+	<property name="PREFIX_BOOTSTRAP" value="${LOG_DIRECTORY}/_bootstrap" />
 
 	<appender name="bootstrap-log-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${PREFIX_BOOTSTRAP}.log</file>
@@ -48,7 +48,7 @@
 
 	<appender name="data-file" class="ch.qos.logback.core.helpers.NOPAppender" />
 
-	<logger name="_bootstrap" additivity="false" level="INFO">
+	<logger name="bootstrap" additivity="false" level="INFO">
 		<appender-ref ref="bootstrap-log-file" />
 	</logger>
 
