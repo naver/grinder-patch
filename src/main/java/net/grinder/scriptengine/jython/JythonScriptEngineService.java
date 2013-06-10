@@ -19,7 +19,7 @@ import net.grinder.util.weave.WeavingException;
  * Jython {@link ScriptEngineService} implementation.
  * 
  * @author Philip Aston
- * @authro JunHo Yoon (modified by)
+ * @author JunHo Yoon (modified by)
  */
 public final class JythonScriptEngineService implements ScriptEngineService {
 
