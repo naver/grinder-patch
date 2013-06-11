@@ -110,8 +110,7 @@ import ch.qos.logback.core.joran.spi.JoranException;
 final class GrinderProcess {
 
 	private final Logger m_terminalLogger;
-	private Logger m_bootstrapLogger = null;
-	private final Logger m_logger;
+	private Logger m_logger = null;
 	private final Logger m_dataLogger;
 	private final LoggerContext m_logbackLoggerContext;
 	private final boolean m_reportTimesToConsole;
@@ -168,7 +167,6 @@ final class GrinderProcess {
 			m_reportTimesToConsole = properties.getBoolean("grinder.reportTimesToConsole", true);
 
 			m_logbackLoggerContext = configureLogging(workerName, logDirectory);
-			m_bootstrapLogger = LoggerFactory.getLogger("bootstrap");
 			m_logger = LoggerFactory.getLogger("worker." + workerName);
 			m_dataLogger = LoggerFactory.getLogger("data");
 
@@ -262,8 +260,8 @@ final class GrinderProcess {
 			m_consoleListener.registerMessageHandlers(messageDispatcher);
 			m_messagePump = new MessagePump(agentReceiver, messageDispatcher, 1);
 		} catch (GrinderException e) {
-			if (m_bootstrapLogger != null) {
-				m_bootstrapLogger.error("Error running worker process", e);
+			if (m_logger != null) {
+				m_logger.error("Error running worker process", e);
 			}
 			throw e;
 		}
@@ -496,10 +494,9 @@ final class GrinderProcess {
 
 		} catch (final ScriptExecutionException e) {
 			m_logger.error("aborting process - {}", e.getShortMessage(), e);
-			m_bootstrapLogger.error("aborting process - {}", e.getShortMessage(), e);
 			m_terminalLogger.error("aborting process - {}", e.getShortMessage(), e);
 		} catch (EngineException e) {
-			m_bootstrapLogger.error("script error - {}", e.getMessage(), e);
+			m_logger.error("script error - {}", e.getMessage(), e);
 			throw e;
 		}
 	}

@@ -1,28 +1,6 @@
 <configuration>
 
 	<property name="PREFIX" value="${LOG_DIRECTORY}/${WORKER_NAME}" />
-	<property name="PREFIX_BOOTSTRAP" value="${LOG_DIRECTORY}/_bootstrap" />
-
-	<appender name="bootstrap-log-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${PREFIX_BOOTSTRAP}.log</file>
-
-		<encoder>
-			<charset>UTF-8</charset>
-			<pattern>%d %-5level %message%n</pattern>
-		</encoder>
-
-		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${PREFIX_BOOTSTRAP}.log%i</fileNamePattern>
-			<minIndex>1</minIndex>
-			<maxIndex>1</maxIndex>
-		</rollingPolicy>
-
-		<triggeringPolicy class="net.grinder.util.logback.RollOnStartUp" />
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>1MB</maxFileSize>
-		</triggeringPolicy>
-
-	</appender>
 
 
 	<appender name="log-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -47,11 +25,6 @@
 	</appender>
 
 	<appender name="data-file" class="ch.qos.logback.core.helpers.NOPAppender" />
-
-	<logger name="bootstrap" additivity="false" level="INFO">
-		<appender-ref ref="bootstrap-log-file" />
-	</logger>
-
 
 	<logger name="worker" additivity="false">
 		<appender-ref ref="log-file" />
