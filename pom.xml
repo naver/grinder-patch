@@ -10,7 +10,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.sf.grinder</groupId>
-			<artifactId>grinder</artifactId>
+			<artifactId>grinder-httpclient</artifactId>
 			<version>3.9.1</version>
 		</dependency>
 	</dependencies>
